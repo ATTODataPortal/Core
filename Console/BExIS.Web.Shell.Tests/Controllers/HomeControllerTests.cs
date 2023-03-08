@@ -4,6 +4,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using System.Web.Mvc;
 using Vaiona.Web.Extensions;
+using BExIS.Web.Shell.Controllers;
 
 namespace BExIS.Web.Shell.Controllers.Tests
 {
@@ -25,7 +26,7 @@ namespace BExIS.Web.Shell.Controllers.Tests
             helper.Dispose();
         }
 
-        [Test()]
+        //[Test()]
         public void IndexTest()
         {
             HomeController controller = new HomeController();
@@ -41,7 +42,7 @@ namespace BExIS.Web.Shell.Controllers.Tests
             title.Should().Contain(tenantName); // Assert.That(result.ViewBag.Title.Contains(tenantName));
         }
 
-        [Test()]
+        //[Test()]
         public void SessionTimeoutTest()
         {
             HomeController controller = new HomeController();

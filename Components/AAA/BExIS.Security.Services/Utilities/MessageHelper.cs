@@ -141,7 +141,6 @@ namespace BExIS.Security.Services.Utilities
             stringBuilder.AppendLine("<b>Intention:</b>");
             stringBuilder.AppendLine(reason);
 
-
             return stringBuilder.ToString();
         }
 
@@ -154,7 +153,7 @@ namespace BExIS.Security.Services.Utilities
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine($"Dataset request from User \"{requester}\" for dataset <b>\"{title}\"</b> with id <b>{datasetid}</b> was withdrawn.<br/>");
-         
+
             return stringBuilder.ToString();
         }
 
@@ -297,6 +296,27 @@ namespace BExIS.Security.Services.Utilities
             return $"The {newRole} role has been {changeType} your account.<br/><br/>{additionalInformation}";
         }
 
+
+        public static string GetSetPublicHeader(long datasetid)
+        {
+            return $"Dataset set public with id = {datasetid}";
+        }
+
+        public static string GetSetPublicMessage(string userName, long datasetid)
+        {
+            return $"The dataset with id {datasetid} was set to public by {userName}.";
+        }
+
+        public static string GetUnsetPublicHeader(long datasetid)
+        {
+            return $"Dataset unset public with id = {datasetid}";
+        }
+
+        public static string GetUnsetPublicMessage(string userName, long datasetid)
+        {
+            return $"The dataset with id {datasetid} was unset from public by {userName}.";
+        }
+
         #region upload api
 
         public static string GetPushApiStoreHeader(long datasetid, string title)
@@ -427,7 +447,7 @@ namespace BExIS.Security.Services.Utilities
             return stringBuilder.ToString();
         }
 
-        #endregion
+        #endregion upload async
 
         #region serach index
 
@@ -437,10 +457,10 @@ namespace BExIS.Security.Services.Utilities
         }
 
         public static string GetSearchReIndexMessage(List<string> errors = null)
-        { 
+        {
             string message = $"The creation of the search index is finished.";
 
-            if (errors != null && errors.Count>0)
+            if (errors != null && errors.Count > 0)
             {
                 message += $"the following errors have occurred. </br>";
 
@@ -453,6 +473,6 @@ namespace BExIS.Security.Services.Utilities
             return message;
         }
 
-        #endregion
+        #endregion serach index
     }
 }
